@@ -3,14 +3,14 @@
 # include <math.h>  // funkcje pow, M_PI, M_E, exp, log,
 using namespace std;
 
-enum { dodawanie, odejmowanie, mnozenie, dzielenie, kwadrat, szescian, potega, pi, e, exponenta,  logarytm, tworca }; 
-// enum - typ wyliczeniowy (przyporz¹dkowuje od 0 i kolejno 1, 2, 3 itd- nie musi miec nazwy
+enum { dodawanie, odejmowanie, mnozenie, dzielenie, kwadrat, szescian, potega, pierwiastek, pi, e, exponenta,  logarytm, tworca }; 
+// enum - typ wyliczeniowy (przyporzÄ…dkowuje od 0 i kolejno 1, 2, 3 itd- nie musi miec nazwy
 
 int main() 
 {
 double liczba1; // float - liczba rzeczywista (z przecinkami)
 double liczba2; 
-int rodzaj_dzialania;// int - integer - liczba calkowita (bez przecinków)
+int rodzaj_dzialania;// int - integer - liczba calkowita (bez przecinkÃ³w)
 
 cout << "\nWitaj w kalkulatorze, ktory pozwoli Ci wykonac kilka dzialan na 2 liczbach: \n\n";
 cout << "Podaj 1 liczbe: ";
@@ -28,12 +28,13 @@ cout << "                          : [3]  - DZIELENIE" << endl;
 cout << "                          : [4]  - KWADRAT LICZB" << endl;  
 cout << "                          : [5]  - SZESCIAN LICZB" << endl; 
 cout << "                          : [6]  - LICZBA 1 PODNIESIONA DO POTEGI LICZBY 2" << endl;
-cout << "                          : [7]  - LICZBY POMNOZONE PRZEZ LICZBE Pi" << endl;
-cout << "                          : [8]  - LICZBY POMNOZONE PRZEZ LICZBE e (EULERA)" << endl;
-cout << "                          : [9]  - exp OBU LICZB (EXPONENTA - exp(x)=e^x)" << endl;
-cout << "                          : [10] - LOGARYTM NATURALNY OBU LICZB" << endl;
+cout << "                          : [7]  - PIERWIASTEK KWADRATOWY OBU LICZB" << endl;
+cout << "                          : [8]  - LICZBY POMNOZONE PRZEZ LICZBE Pi" << endl;
+cout << "                          : [9]  - LICZBY POMNOZONE PRZEZ LICZBE e (EULERA)" << endl;
+cout << "                          : [10]  - exp OBU LICZB (EXPONENTA - exp(x)=e^x)" << endl;
+cout << "                          : [11] - LOGARYTM NATURALNY OBU LICZB" << endl;
 cout << "_________________________________________________" << endl; 
-cout << "                          : [11] - Autor programu" << endl; 
+cout << "                          : [12] - Autor programu" << endl; 
 cout << endl << endl;
 
 cin >> rodzaj_dzialania;
@@ -41,7 +42,7 @@ cout << endl << endl;
 	
 switch (rodzaj_dzialania) 
 {
-// ponizsze podstawowe dzialania na liczbach nie wymagaj¹ biblioteki math.h (#include <math.h>)
+// ponizsze podstawowe dzialania na liczbach nie wymagajÄ… biblioteki math.h (#include <math.h>)
 	case dodawanie: 	cout << "Suma liczb wynosi: " << liczba1 + liczba2 << endl; break;
 	case odejmowanie: 	cout << "Roznica liczb wynosi: " << liczba1 - liczba2 << endl; break;
 	case mnozenie: 		cout << "Iloczyn liczb wynosi: " << liczba1 * liczba2 << endl; break;
@@ -52,13 +53,15 @@ switch (rodzaj_dzialania)
 				  		cout << "Kwadrat 2 liczby (" << liczba2 << ") wynosi: " << liczba2 * liczba2 << endl; break;
 	case szescian: 		cout << "Szescian 1 liczby (" << liczba1 << ") wynosi: " << liczba1 * liczba1 * liczba1<< endl;
 				   		cout << "Szescian 2 liczby (" << liczba2 << ") wynosi: " << liczba2 * liczba2 * liczba2<< endl; break;
-// ponizsze dzialania na liczbach wymagaj¹ biblioteki math.h (#include <math.h>)
+// ponizsze dzialania na liczbach wymagajÄ… biblioteki math.h (#include <math.h>)
 	case potega:	cout << "Liczba 1 (" << liczba1 << ") do potegi liczby 2 (" << liczba2 << ") wynosi: " << pow (liczba1, liczba2) << endl;
 					cout << liczba1 << " do potegi " << liczba2 << " = " << pow (liczba1, liczba2) << endl; break;
+	case pierwiastek: 	cout << "Pierwiastek kwadratowy 1 liczby (" << liczba1 << ") wynosi: " << sqrt (liczba1) << endl;
+						cout << "Pierwiastek kwadratowy 2 liczby (" << liczba2 << ") wynosi: " << sqrt (liczba2) << endl; break;
 /*	
-Jeœli mamy potrzebê podnieœæ jak¹kolwiek liczbê do dowolnej potêgi mo¿emy to zrobiæ u¿ywaj¹c funkcji pow. 
-Funkcja ta przyjmuje dwa parametry i zwraca wynik potêgowania. 
-Pierwszym parametrem jest liczba, któr¹ chcemy potêgowaæ, drugim natomiast potêga do której chcemy wybran¹ liczbê podnieœæ.
+JeÅ›li mamy potrzebÄ™ podnieÅ›Ä‡ jakÄ…kolwiek liczbÄ™ do dowolnej potÄ™gi moÅ¼emy to zrobiÄ‡ uÅ¼ywajÄ…c funkcji pow. 
+Funkcja ta przyjmuje dwa parametry i zwraca wynik potÄ™gowania. 
+Pierwszym parametrem jest liczba, ktÃ³rÄ… chcemy potÄ™gowaÄ‡, drugim natomiast potÄ™ga do ktÃ³rej chcemy wybranÄ… liczbÄ™ podnieÅ›Ä‡.
 pow( liczba, potega ). 
 Jesli podasz np. liczby z duza iloscia miejsc po przecinku moze wyskoczyc w wyniku "#INF" - oznacza "infinite" - to ze
 przekroczyles dokladnosc tych liczb i dla programu osiagnales nieskonczonosc.
@@ -70,8 +73,8 @@ przekroczyles dokladnosc tych liczb i dla programu osiagnales nieskonczonosc.
 	case exponenta: 	cout << "exp 1 liczby (" << liczba1 << ") wynosi: " << exp (liczba1) << endl;
 						cout << "exp 2 liczby (" << liczba2<< ") wynosi: " << pow (M_E, liczba2) << endl; break;
 /* 
-exp mozna obliczyc na dwa sposoby: exp (liczba1) oraz pow (M_E, liczba2) - czyli e do potegi liczba2 poniewaz exp(x)=e^x
-funkcja wyk³adnicza exp(x) = e^x= pochodna d(e^x)/dx = ca³ka (e^x) dx 
+Funkcje ekspotencjalna exp mozna obliczyc na dwa sposoby: exp (liczba1) oraz pow (M_E, liczba2) - czyli e do potegi liczba2 poniewaz exp(x)=e^x
+funkcja wykÅ‚adnicza exp(x) = e^x= pochodna d(e^x)/dx = caÅ‚ka (e^x) dx 
 */
 	case logarytm: 	cout << "Logarytm naturalny 1 liczby (" << liczba1 << ") wynosi: " << log (liczba1) << endl;
 					cout << "Logarytm naturalny 2 liczby (" << liczba2<< ") wynosi: " << log (liczba2) << endl; break;
